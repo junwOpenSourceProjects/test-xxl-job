@@ -163,7 +163,7 @@ xxl:
       port: 9999
       logpath: /data/applogs/xxl-job/jobhandler
       logretentiondays: 30
-    accessToken: default_token
+    accessToken: ***SECRET***
 ```
 
 ## 🎯 核心特性
