@@ -145,7 +145,7 @@ public class JobInfoController {
 		}
 
 		JobTriggerPoolHelper.trigger(id, TriggerTypeEnum.MANUAL, -1, null, executorParam, addressList);
-		return ReturnT.SUCCESS;
+		return new ReturnT<>(ReturnT.SUCCESS_CODE, null);
 	}
 
 	@RequestMapping("/nextTriggerTime")
@@ -169,9 +169,9 @@ public class JobInfoController {
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
-			return new ReturnT<List<String>>(ReturnT.FAIL_CODE, (I18nUtil.getString("schedule_type")+I18nUtil.getString("system_unvalid")) + e.getMessage());
+			return new ReturnT<>(ReturnT.FAIL_CODE, (I18nUtil.getString("schedule_type")+I18nUtil.getString("system_unvalid")) + e.getMessage());
 		}
-		return new ReturnT<List<String>>(result);
+		return new ReturnT<>(ReturnT.SUCCESS_CODE, null, result);
 
 	}
 	

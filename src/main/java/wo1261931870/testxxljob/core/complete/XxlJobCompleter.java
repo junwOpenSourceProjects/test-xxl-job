@@ -58,7 +58,7 @@ public class XxlJobCompleter {
                     if (childJobId > 0) {
 
                         JobTriggerPoolHelper.trigger(childJobId, TriggerTypeEnum.PARENT, -1, null, null, null);
-                        ReturnT<String> triggerChildResult = ReturnT.SUCCESS;
+                        ReturnT<String> triggerChildResult = new ReturnT<>(ReturnT.SUCCESS_CODE, null);
 
                         // add msg
                         triggerChildMsg += MessageFormat.format(I18nUtil.getString("jobconf_callback_child_msg1"),

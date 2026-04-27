@@ -152,7 +152,7 @@ public class JobRegistryHelper {
 		if (!StringUtils.hasText(registryParam.getRegistryGroup())
 				|| !StringUtils.hasText(registryParam.getRegistryKey())
 				|| !StringUtils.hasText(registryParam.getRegistryValue())) {
-			return new ReturnT<String>(ReturnT.FAIL_CODE, "Illegal Argument.");
+			return new ReturnT<>(ReturnT.FAIL_CODE, "Illegal Argument.");
 		}
 
 		// async execute
@@ -169,7 +169,7 @@ public class JobRegistryHelper {
 			}
 		});
 
-		return ReturnT.SUCCESS;
+		return new ReturnT<>(ReturnT.SUCCESS_CODE, null);
 	}
 
 	public ReturnT<String> registryRemove(RegistryParam registryParam) {
@@ -178,7 +178,7 @@ public class JobRegistryHelper {
 		if (!StringUtils.hasText(registryParam.getRegistryGroup())
 				|| !StringUtils.hasText(registryParam.getRegistryKey())
 				|| !StringUtils.hasText(registryParam.getRegistryValue())) {
-			return new ReturnT<String>(ReturnT.FAIL_CODE, "Illegal Argument.");
+			return new ReturnT<>(ReturnT.FAIL_CODE, "Illegal Argument.");
 		}
 
 		// async execute
@@ -193,7 +193,7 @@ public class JobRegistryHelper {
 			}
 		});
 
-		return ReturnT.SUCCESS;
+		return new ReturnT<>(ReturnT.SUCCESS_CODE, null);
 	}
 
 	private void freshGroupRegistryInfo(RegistryParam registryParam){

@@ -148,17 +148,17 @@ public class JobCompleteHelper {
 			}
 		});
 
-		return ReturnT.SUCCESS;
+		return new ReturnT<>(ReturnT.SUCCESS_CODE, null);
 	}
 
 	private ReturnT<String> callback(HandleCallbackParam handleCallbackParam) {
 		// valid log item
 		XxlJobLog log = XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao().load(handleCallbackParam.getLogId());
 		if (log == null) {
-			return new ReturnT<String>(ReturnT.FAIL_CODE, "log item not found.");
+			return new ReturnT<>(ReturnT.FAIL_CODE, "log item not found.");
 		}
 		if (log.getHandleCode() > 0) {
-			return new ReturnT<String>(ReturnT.FAIL_CODE, "log repeate callback.");     // avoid repeat callback, trigger child job etc
+			return new ReturnT<>(ReturnT.FAIL_CODE, "log repeate callback.");     // avoid repeat callback, trigger child job etc
 		}
 
 		// handle msg
@@ -176,7 +176,7 @@ public class JobCompleteHelper {
 		log.setHandleMsg(handleMsg.toString());
 		XxlJobCompleter.updateHandleInfoAndFinish(log);
 
-		return ReturnT.SUCCESS;
+		return new ReturnT<>(ReturnT.SUCCESS_CODE, null);
 	}
 
 
